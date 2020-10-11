@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DeliMeals',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -35,8 +34,7 @@ class MyApp extends StatelessWidget {
               headline6: TextStyle(
                 fontFamily: 'RobotoCondensed',
                 fontSize: 20,
-                fontWeight: FontWeight.bold
-              )
+              ),
             ),
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
