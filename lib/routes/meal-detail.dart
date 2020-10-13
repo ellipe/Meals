@@ -28,6 +28,23 @@ class MealDetailScreen extends StatelessWidget {
     );
   }
 
+  Widget buildChips(List<String> chips) {
+    return Wrap(
+      children: chips
+          .map((chip) => Container(
+                margin: EdgeInsets.only(
+                  left: 5,
+                ),
+                child: Chip(
+                  backgroundColor: Colors.black45,
+                  elevation: 4,
+                  label: Text(chip),
+                ),
+              ))
+          .toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments as String;
@@ -46,22 +63,7 @@ class MealDetailScreen extends StatelessWidget {
               ),
             ),
             buildSectionTitle(context, 'Ingredients'),
-            buildContainerWidget(
-              ListView.builder(
-                itemBuilder: (ctx, idx) {
-                  return Card(
-                    child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 5,
-                          horizontal: 10,
-                        ),
-                        child: Text(selectedMeal.ingredients[idx])),
-                    color: Theme.of(context).accentColor,
-                  );
-                },
-                itemCount: selectedMeal.ingredients.length,
-              ),
-            ),
+            buildChips(selectedMeal.ingredients),
             buildSectionTitle(context, 'Steps'),
             buildContainerWidget(
               ListView.builder(
