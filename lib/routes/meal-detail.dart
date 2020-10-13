@@ -28,7 +28,7 @@ class MealDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget buildChips(List<String> chips) {
+  Widget buildChips(BuildContext context, List<String> chips) {
     return Wrap(
       children: chips
           .map((chip) => Container(
@@ -36,9 +36,15 @@ class MealDetailScreen extends StatelessWidget {
                   left: 5,
                 ),
                 child: Chip(
-                  backgroundColor: Colors.black45,
+                  backgroundColor: Theme.of(context).primaryColor,
                   elevation: 4,
-                  label: Text(chip),
+                  label: Text(
+                    chip,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500
+                    ),
+                  ),
                 ),
               ))
           .toList(),
@@ -63,7 +69,7 @@ class MealDetailScreen extends StatelessWidget {
               ),
             ),
             buildSectionTitle(context, 'Ingredients'),
-            buildChips(selectedMeal.ingredients),
+            buildChips(context, selectedMeal.ingredients),
             buildSectionTitle(context, 'Steps'),
             buildContainerWidget(
               ListView.builder(
@@ -84,7 +90,7 @@ class MealDetailScreen extends StatelessWidget {
                 },
                 itemCount: selectedMeal.steps.length,
               ),
-            )
+            ),
           ],
         ),
       ),

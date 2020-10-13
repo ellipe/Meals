@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
 
 // Routes
-import 'routes/meals.dart';
-import 'routes/meal-detail.dart';
-import 'routes/categories.dart';
+import './routes/tabs.dart';
+import './routes/meals.dart';
+import './routes/meal-detail.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -45,8 +47,9 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CategoriesScreen(),
+      initialRoute: '/',
       routes: {
+        '/' : (ctx) => TabsScreen(),
         '/meals' : (ctx) => MealsScreen(),
         '/meal-detail' : (ctx) => MealDetailScreen(),
       },
