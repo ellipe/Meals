@@ -1,15 +1,19 @@
+import 'package:Meals/models/meal.dart';
 import 'package:flutter/material.dart';
 import '../widgets/meal_item.dart';
-import '../seeds/dummy_data.dart';
 
 class MealsScreen extends StatelessWidget {
+  final List<Meal> _availableMeals;
+
+  MealsScreen(this._availableMeals);
+
   @override
   Widget build(BuildContext context) {
     final routeArg =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryTitle = routeArg['title'];
     final categoryId = routeArg['id'];
-    final categoryMeals = DUMMY_MEALS
+    final categoryMeals = _availableMeals
         .where((meal) => meal.categories.contains(categoryId))
         .toList();
 
